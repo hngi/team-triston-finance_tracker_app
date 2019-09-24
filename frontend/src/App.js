@@ -18,8 +18,8 @@ function App() {
             <Switch>
               <Route exact path="/" component={ Login } />
               <Route exact path="/get-started" component={ Signup } />
-              <PrivateRoute exact path="/add-expense" component={ Expense } />
-              <PrivateRoute exact path="/report" component={ Report } />
+              {/* <PrivateRoute exact path="/add-expense" component={ Expense } />
+              <PrivateRoute exact path="/report" component={ Report } /> */}
             </Switch>
           </BrowserRouter>
         </section>
