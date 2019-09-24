@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer } from "./components";
+import { Footer } from "./components";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -12,14 +12,14 @@ import Report from './pages/Report';
 function App() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
         <section className="main">
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={ Login } />
               <Route exact path="/get-started" component={ Signup } />
-              {/* <PrivateRoute exact path="/add-expense" component={ Expense } />
-              <PrivateRoute exact path="/report" component={ Report } /> */}
+              <PrivateRoute exact path="/add-expense" component={ Expense } />
+              <PrivateRoute exact path="/report" component={ Report } />
             </Switch>
           </BrowserRouter>
         </section>
