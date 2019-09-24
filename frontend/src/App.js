@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
 import { Header, Footer } from "./components";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 
 // pages
 import Login from './pages/Login';
