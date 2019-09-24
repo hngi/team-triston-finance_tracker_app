@@ -5,7 +5,7 @@ import Styles from './Header.module.css';
 function Header() {
     return (
         <div className = { Styles.header }>
-            
+            Header
         </div>
     )
 }
