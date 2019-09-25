@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, Medium, sans-serif;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+}
+
+.btn {
+  background: #394a6d;
+  color: white;
+  font-size: 1.1rem;
+  border: none;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+/*=====SIDE NAV STYLES=====*/
+main .side_bar {
+  background: #52de97;
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+}
+
+main ul.side_nav {
+  list-style: none;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+main ul.side_nav li {
+  margin-bottom: 4rem;
+  transition: background-color 0.3s;
+  padding: 0.6rem 1rem;
+}
+
+main ul.side_nav li:hover {
+  background: #92e5bb;
+}
+
+main ul.side_nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+main .side_bar .sidebar_btn {
+  align-self: center;
+}
+
+/*=====MAIN DASHBOARD STYLES=====*/
+section.dashboard {
+  width: 100%;
+}
+
+section.dashboard header {
+  width: 90%;
+  margin: 0 auto;
+}
+
+section.dashboard .header_nav {
+  margin-top: 6rem;
+  display: flex;
+  height: 60px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.dashboard .header_nav .btn {
+  box-shadow: 0 3px 12px #00000029;
+}
+
+section.dashboard .header_nav h1 {
+  font-weight: 500;
+}
+
+/*=====DASHBOARD CARDS STYLES=====*/
+section.dashboard .dashboard_cards {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.dashboard_cards .square_cards {
+  display: flex;
+  /* background: blue; */
+  margin-bottom: 1rem;
+}
+
+.square_cards .card_square {
+  flex: 1;
+
+  height: 20vh;
+  color: white;
+  background: #3c9d9b;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .dashboard_cards .card_square:nth-child(2) {
+  background: #92e5bb;
+  margin-right: 1rem;
+} */
+
+.dashboard_cards .card_square:nth-child(2) {
+  background: #92e5bb;
+  margin-left: 1rem;
+}
+
+.dashboard_cards .card_rect {
+  background: #394a6d;
+  color: white;
+  border-radius: 3px;
+  text-align: center;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.amount {
+  font-size: 1.5rem;
+}

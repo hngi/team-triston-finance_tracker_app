@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dashboard.css" />
+    <title>User Dashboard</title>
+  </head>
+  <body>
+    <main>
+      <!--Dashboard Sidenav-->
+      <div class="side_bar">
+        <ul class="side_nav">
+          <li>
+            <a href="#"> <i class="material-icons">dashboard</i> Dashboard</a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="material-icons">offline_pin</i> Total Per Year</a
+            >
+          </li>
+
+          <li>
+            <a href="#"> <i class="material_icons"></i> Total Per Week</a>
+          </li>
+        </ul>
+
+        <button class="btn sidebar_btn">Log Out</button>
+      </div>
+
+      <!--dashboard main content-->
+      <section class="dashboard">
+        <header>
+          <div class="header_nav">
+            <h1>Welcome User,</h1>
+            <button class="btn">
+              <i class="material-icons">add_circle</i> Add New Item
+            </button>
+          </div>
+        </header>
+
+        <div class="dashboard_cards">
+          <div class="square_cards">
+            <div class="card_square card_left">
+              <i class="material-icons">money</i>
+              <p class="amount">$50,000</p>
+              <p>total spent in a week</p>
+            </div>
+            <div class="card_square card_right">
+              <i class="material-icons">money</i>
+              <p class="amount">$100,000</p>
+              <p>total spent in a month</p>
+            </div>
+          </div>
+
+          <div class="card_rect">
+            <i class="material-icons">money</i>
+            <p class="amount">$1,200,000</p>
+            <p>total spent in a year</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
