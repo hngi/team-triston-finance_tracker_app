@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import bg from '../images/login-bg.jpg';
 import '../styles/Login.css';
-import { Button, FormGroup, Label, Input } from 'reactstrap';
-import { Password } from '../components';
+import { Button } from 'reactstrap';
+import { Password, EmailField } from '../components';
 
 
 function Login() {
@@ -10,34 +10,40 @@ function Login() {
     const [values, set] = useState({
         showPassword:false,
         email:"",
-        password:""
+        password:"",
+        validEmail:false,
+        validPassword:false
     })
 
-    const handleInput = ({ target })=>{
+    const handleInput = ({ target, valid })=>{
         const { name, value } = target;
-        set(values => ({ ...values, [name]:value }))
+        const formdata = {};
+        formdata[name] = value;
+        formdata[name === "email" ? "validEmail": "validPassword"] = valid;
+        set(values => ({ ...values,...formdata }));
+        console.log(values)
     }
 
     const handleSubmit = ()=>{
-        console.log(values)
+        console.log(values);
     }
 
     return (
         <div className="page-container">
             <div className="page-group form-area">
-                <form>
+                <form onSubmit = {e => { e.preventDefault() }} >
                     <h5>Welcome back to TritonFinApp!</h5>
-                    <FormGroup>
-                        <Label for="exampleEmail">Email</Label>
-                        <Input 
-                            className="ctrl md" 
-                            type="email" 
-                            name="email" 
-                            id="exampleEmail"
-                            onKeyUp = { handleInput }
-                            autoComplete = "email"
-                        />
-                    </FormGroup>
+                    {/* <UncontrolledAlert  color="danger">
+                        Email is Required
+                    </UncontrolledAlert > */}
+                    <EmailField 
+                        className="ctrl md" 
+                        type="email" 
+                        name="email" 
+                        id="user-email"
+                        onKeyUp = { handleInput }
+                        autoComplete = "email"
+                    />
                     <Password
                         className="ctrl md" 
                         name="password" 
@@ -58,6 +64,8 @@ function Login() {
                         size="lg" 
                         block
                         onClick = { handleSubmit }
+                        type = "button"
+                        disabled = { !values.validEmail || !values.validPassword }
                     > 
                         Sign In 
                     </Button>
