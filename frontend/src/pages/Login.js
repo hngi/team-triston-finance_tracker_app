@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import bg from '../images/login-bg.jpg';
 import '../styles/Login.css';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
-// import Visibility from '@material-ui/icons/Visibility';
-// import VisibilityOff from '@material-ui/icons/VisibilityOff';
-
-
-// const handleClickShowPassword = ()=>{
-
-// }
-
-// const handleChange = (type)=>{
-//     console.log(type)
-// }
+import { Password } from '../components';
 
 
 function Login() {
 
-
     const [values, set] = useState({
-        showPassword:false
+        showPassword:false,
+        email:"",
+        password:""
     })
+
+    const handleInput = ({ target })=>{
+        const { name, value } = target;
+        set(values => ({ ...values, [name]:value }))
+    }
+
+    const handleSubmit = ()=>{
+        console.log(values)
+    }
 
     return (
         <div className="page-container">
@@ -29,16 +29,38 @@ function Login() {
                     <h5>Welcome back to TritonFinApp!</h5>
                     <FormGroup>
                         <Label for="exampleEmail">Email</Label>
-                        <Input type="email" name="email" id="exampleEmail" />
+                        <Input 
+                            className="ctrl md" 
+                            type="email" 
+                            name="email" 
+                            id="exampleEmail"
+                            onKeyUp = { handleInput }
+                            autoComplete = "email"
+                        />
                     </FormGroup>
-                    <FormGroup>
-                        <Label for="exampleEmail">Password</Label>
-                        <Input type="password" name="password" id="password" />
-                    </FormGroup>
+                    <Password
+                        className="ctrl md" 
+                        name="password" 
+                        id="user-password"
+                        onKeyUp = { handleInput }
+                        autoComplete = "current-password"
+                    />
                     <div className="forget-pass">
-                        <b> Forget Password ? </b>
+                        <Button 
+                            className="forget-password-btn" 
+                            color="link"
+                        >
+                            Forgot Password ?
+                        </Button>
                     </div>
-                    <Button color="success" size="lg" block> Sign In </Button>
+                    <Button 
+                        color="success" 
+                        size="lg" 
+                        block
+                        onClick = { handleSubmit }
+                    > 
+                        Sign In 
+                    </Button>
                     <div className="text-center mt-3">
                         <p>Don't have an account? <a href="/" className="text-signup">Sign Up</a></p>
                     </div>
@@ -54,6 +76,7 @@ function Login() {
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
+                    <Button className="inverted-white get-started" outline color="primary" >Get Started</Button>
                 </div>
             </div>
         </div>
