@@ -6,9 +6,20 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 function Password(props) {
 
-    let { onPasswordEntered, label, isInvalid, minLength, onKeyUp, className:classes, type, ...others } = props;
+    let { 
+        onPasswordEntered,
+        visibilityControl,
+        label,
+        isInvalid, 
+        minLength, 
+        onKeyUp, 
+        className:classes, 
+        type, 
+        ...others 
+    } = props;
 
     minLength = minLength|| 6;
+    visibilityControl = typeof visibilityControl === "undefined" ? true : visibilityControl;
 
     const [inputstate, set] = useState({
         isInvalid: isInvalid || false,
@@ -40,7 +51,7 @@ function Password(props) {
 
         set(state => ({ ...state, isInvalid, valid, errorText }));
 
-        onKeyUp && onKeyUp({ target, valid:!inputstate.isInvalid })
+        onKeyUp && onKeyUp({ target, valid:!isInvalid })
     }
 
     return (
@@ -52,13 +63,17 @@ function Password(props) {
                 onKeyUp = { handeleKeyUp }
                 type={ inputstate.type } 
             />
-            <div 
-                className = { styles.iconHolder }
-                aria-label="toggle password visibility"
-                onClick={ handleClickShowPassword }
-                >
-             { !inputstate.showpassword ? <Visibility /> : <VisibilityOff /> }
-            </div>
+           { 
+               visibilityControl 
+                ?   <div 
+                        className = { styles.iconHolder }
+                        aria-label="toggle password visibility"
+                        onClick={ handleClickShowPassword }
+                        >
+                        { !inputstate.showpassword ? <Visibility /> : <VisibilityOff /> }
+                    </div>
+                :null
+            }
             {
                 inputstate.valid === "valid" 
                 ? null 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import bg from '../images/login-bg.jpg';
-import '../styles/Login.css';
 import { Button } from 'reactstrap';
 import { Password, EmailField } from '../components';
+import '../styles/Login.css';
 
 
 function Login() {
@@ -16,6 +16,7 @@ function Login() {
     })
 
     const handleInput = ({ target, valid })=>{
+        console.log({values,target, valid})
         const { name, value } = target;
         const formdata = {};
         formdata[name] = value;
@@ -33,9 +34,6 @@ function Login() {
             <div className="page-group form-area">
                 <form onSubmit = {e => { e.preventDefault() }} >
                     <h5>Welcome back to TritonFinApp!</h5>
-                    {/* <UncontrolledAlert  color="danger">
-                        Email is Required
-                    </UncontrolledAlert > */}
                     <EmailField 
                         className="ctrl md" 
                         type="email" 
