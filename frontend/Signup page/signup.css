@@ -1,7 +1,7 @@
-* {
+*{
     margin: 0px;
     padding: 0px;
-  }
+}
 body{
     background-color: #ffffff;
     font-family: Poppins;
@@ -9,8 +9,10 @@ body{
 .container.form-box {
     border: 1px solid #3C9D9B;
     border-radius: 5px;
-    margin-top: 71px;
+    margin-top: 70px;
     width: 60%;
+    box-shadow: 4px #ddd;
+    margin-bottom: 70px;
 }
 h3{
     margin-left: 99px;
@@ -31,6 +33,9 @@ p{
     margin-top: 15px;
     margin-bottom: 30px;
 }
+#password {
+    margin-bottom: 10px;
+}
 #signIn{
     margin-top: 30px;
     Background-color: #52DE97;
@@ -46,4 +51,27 @@ input[name=Fname] {
 }
 a {
     color: #52DE97;
+}
+/* On screens that are 992px or less */
+@media screen and (max-width: 992px) {
+   
+}
+  
+  /* On screens that are 600px or less */
+@media screen and (max-width: 600px) {
+    .container.form-box {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        margin-left: 0px;
+        margin-top: 15px;
+    }
+    h5 {
+        margin-left: 0px;
+    }
+    .container-fluid.forminput {
+        padding: 0px;
+    }
 }
