@@ -5,7 +5,7 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import '../styles/ForgotPassword.css';
 
 
-function Login() {
+function ForgotPassword() {
 
     const [values, set] = useState({
         email:"",
@@ -62,4 +62,4 @@ function Login() {
     )
 }
 
-export default Login
+export default ForgotPassword
