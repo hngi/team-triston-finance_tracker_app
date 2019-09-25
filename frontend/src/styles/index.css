@@ -43,3 +43,8 @@ body {
   background-color: #1dc367;
   border-color: none;
 }
+
+
+button:disabled{
+  cursor: not-allowed;
+}
