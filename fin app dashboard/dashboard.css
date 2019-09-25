@@ -48,6 +48,12 @@ main ul.side_nav a {
   color: white;
   text-decoration: none;
   font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+main ul.side_nav a i {
+  margin-right: 0.3rem;
 }
 
 main .side_bar .sidebar_btn {
@@ -70,17 +76,47 @@ section.dashboard .header_nav {
   height: 60px;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 section.dashboard .header_nav .btn {
   box-shadow: 0 3px 12px #00000029;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+section.dashboard .header_nav .btn i {
+  margin-right: 0.3rem;
 }
 
 section.dashboard .header_nav h1 {
   font-weight: 500;
 }
 
+p.response {
+  color: white;
+  text-align: center;
+  background: #52de97;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  padding: 0.3rem 1rem;
+  align-self: center;
+  border-radius: 3px;
+}
+
+p.response i {
+  cursor: pointer;
+}
+
 /*=====DASHBOARD CARDS STYLES=====*/
+section.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
 section.dashboard .dashboard_cards {
   width: 60%;
   margin: 0 auto;

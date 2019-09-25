@@ -8,64 +8,117 @@
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="add_item.css" />
     <link rel="stylesheet" href="dashboard.css" />
     <title>User Dashboard</title>
   </head>
   <body>
-    <main>
-      <!--Dashboard Sidenav-->
-      <div class="side_bar">
-        <ul class="side_nav">
-          <li>
-            <a href="#"> <i class="material-icons">dashboard</i> Dashboard</a>
-          </li>
+    <div class="content_container">
+      <main>
+        <!--Dashboard Sidenav-->
+        <div class="side_bar">
+          <ul class="side_nav">
+            <li>
+              <a href="#"> <i class="material-icons">dashboard</i> Dashboard</a>
+            </li>
 
-          <li>
-            <a href="#">
-              <i class="material-icons">offline_pin</i> Total Per Year</a
-            >
-          </li>
+            <li>
+              <a href="#">
+                <i class="material-icons">money</i> Total Per Year</a
+              >
+            </li>
 
-          <li>
-            <a href="#"> <i class="material_icons"></i> Total Per Week</a>
-          </li>
-        </ul>
+            <li>
+              <a href="#">
+                <i class="material-icons">money</i>Total Per Month
+              </a>
+            </li>
 
-        <button class="btn sidebar_btn">Log Out</button>
-      </div>
+            <li>
+              <a href="#">
+                <i class="material-icons">money</i> Total Per Week</a
+              >
+            </li>
+          </ul>
 
-      <!--dashboard main content-->
-      <section class="dashboard">
-        <header>
-          <div class="header_nav">
-            <h1>Welcome User,</h1>
-            <button class="btn">
-              <i class="material-icons">add_circle</i> Add New Item
-            </button>
+          <button class="btn sidebar_btn">Log Out</button>
+        </div>
+
+        <!--dashboard main content-->
+        <section class="dashboard">
+          <header>
+            <div class="header_nav">
+              <h1>Welcome User,</h1>
+              <button class="btn">
+                <i class="material-icons">add_circle</i> Add New Item
+              </button>
+            </div>
+          </header>
+
+          <p class="response">Successfully Updated <i class="material-icons">ic_clear</i></p>
+
+          <div class="dashboard_cards">
+            <div class="square_cards">
+              <div class="card_square card_left">
+                <i class="material-icons">money</i>
+                <p class="amount">$50,000</p>
+                <p>total spent in a week</p>
+              </div>
+              <div class="card_square card_right">
+                <i class="material-icons">money</i>
+                <p class="amount">$100,000</p>
+                <p>total spent in a month</p>
+              </div>
+            </div>
+
+            <div class="card_rect">
+              <i class="material-icons">money</i>
+              <p class="amount">$1,200,000</p>
+              <p>total spent in a year</p>
+            </div>
           </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal">
+      <form action="" class="modal_content">
+        <header>
+          <p>Add Item</p>
+          <i class="material-icons close">ic_clear</i>
         </header>
 
-        <div class="dashboard_cards">
-          <div class="square_cards">
-            <div class="card_square card_left">
-              <i class="material-icons">money</i>
-              <p class="amount">$50,000</p>
-              <p>total spent in a week</p>
-            </div>
-            <div class="card_square card_right">
-              <i class="material-icons">money</i>
-              <p class="amount">$100,000</p>
-              <p>total spent in a month</p>
-            </div>
+        <div class="form_container">
+          <div class="form_row">
+            <label for="time">Select time period</label>
+            <select id="time">
+              <option value="Choose time period">Choose time period</option>
+              <option value="January 2019">January 2019</option>
+              <option value="February 2019">February 2019</option>
+              <option value="March 2019">March 2019</option>
+              <option value="April 2019">April 2019</option>
+            </select>
           </div>
 
-          <div class="card_rect">
-            <i class="material-icons">money</i>
-            <p class="amount">$1,200,000</p>
-            <p>total spent in a year</p>
+          <div class="form_row">
+            <label for="">Name of item purchased</label>
+            <input type="text" placeholder="" id="" />
           </div>
+
+          <div class="form_row">
+            <label for="">Amount for item purchased</label>
+            <input type="text" placeholder="" id="" />
+          </div>
+
+          <div class="form_row">
+            <label for="">Description of item purchased</label>
+            <input type="text" placeholder="" id="" />
+          </div>
+
+          <button>Submit</button>
         </div>
-      </section>
-    </main>
+      </form>
+    </div>
+    <script src="dashboard.js"></script>
   </body>
 </html>
