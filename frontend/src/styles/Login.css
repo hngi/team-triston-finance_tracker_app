@@ -89,3 +89,14 @@ button.get-started{
 .btn-link.forget-password-btn:hover {
     color: #298050;
 }
+
+.sign-up {
+    display: flex;
+    justify-content: flex-end;
+    padding: 65px;
+}
+
+.sign-up > button {
+    background-color: #394A6D;
+    border: 0
+}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { FormGroup, Label, Input, InputGroup, InputGroupText, InputGroupAddon } from 'reactstrap';
 import styles from "./Password.module.css";
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+// import Visibility from '@material-ui/core/Visibility';
+// import VisibilityOff from '@material-ui/core/VisibilityOff';
 
 function Password(props) {
 
@@ -57,7 +57,7 @@ function Password(props) {
                 aria-label="toggle password visibility"
                 onClick={ handleClickShowPassword }
                 >
-             { !inputstate.showpassword ? <Visibility /> : <VisibilityOff /> }
+             { /* !inputstate.showpassword ? <Visibility /> : <VisibilityOff /> */ }
             </div>
             {
                 inputstate.valid === "valid" 

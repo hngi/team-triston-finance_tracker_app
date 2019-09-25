@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import bg from '../images/login-bg.jpg';
 import '../styles/Login.css';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
@@ -12,6 +13,8 @@ function Login() {
         email:"",
         password:""
     })
+    const [toForgotPassword, setToForgotPassword]  = useState(false)
+    const [toSignUp, setToSignUp]  = useState(false)
 
     const handleInput = ({ target })=>{
         const { name, value } = target;
@@ -22,7 +25,18 @@ function Login() {
         console.log(values)
     }
 
+    const handleRedirectToForgotPassword = () => {
+        setToForgotPassword(true)
+    }
+
+    const handleRedirectToSignUp = () => {
+        setToSignUp(true)
+    }
+
     return (
+        <>
+        {toForgotPassword ? <Redirect to="/forgot-password" /> : null}
+        {toSignUp ? <Redirect to="/get-started" /> : null}
         <div className="page-container">
             <div className="page-group form-area">
                 <form>
@@ -49,6 +63,7 @@ function Login() {
                         <Button 
                             className="forget-password-btn" 
                             color="link"
+                            onClick = { handleRedirectToForgotPassword }
                         >
                             Forgot Password ?
                         </Button>
@@ -59,7 +74,7 @@ function Login() {
                         block
                         onClick = { handleSubmit }
                     > 
-                        Sign In 
+                        Login
                     </Button>
                     <div className="text-center mt-3">
                         <p>Don't have an account? <a href="/" className="text-signup">Sign Up</a></p>
@@ -69,6 +84,13 @@ function Login() {
             <div className="page-group form-image">
                 <div className="background-holder" style={{backgroundImage: `url(${bg})` }}> </div>
                 <div className="overlay"></div>
+                <div className="sign-up">
+                        <Button 
+                            onClick = { handleRedirectToSignUp }
+                        >
+                           Sign up
+                        </Button>
+                    </div>
                 <div className="desc-text">
                     <h4> TristonFinApp gives best services to our customers. </h4>
                     <p>
@@ -80,6 +102,7 @@ function Login() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
