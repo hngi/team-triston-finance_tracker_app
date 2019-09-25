@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { FormGroup, Label, Input} from 'reactstrap';
 import styles from "./Password.module.css";
-import Visibility from '@material-ui/core/Visibility';
-import VisibilityOff from '@material-ui/core/VisibilityOff';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 function Password(props) {
 

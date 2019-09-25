@@ -9,7 +9,7 @@ function InputField(props) {
     
     validInput = validInput || true;
 
-    errorText = required ? `${ label.toLowercase() } is required!` : errorText;
+    errorText = required ? `${ (label ||"").toLowerCase() } is required!` : errorText;
 
     return (
         <FormGroup className = { styles.formGroup + " " + ( formGroupClass || "" ) }>

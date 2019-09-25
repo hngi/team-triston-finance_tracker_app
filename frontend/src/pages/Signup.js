@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Button, Row, Col } from 'reactstrap';
+import { Button, Row, Col, Container } from 'reactstrap';
 import { InputField, EmailField, Password  } from "../components";
+import { Link } from 'react-router-dom';
 
 function Signup() {
 
@@ -15,6 +16,7 @@ function Signup() {
 
     return (
         <div>
+            <Container>
             <form>
                 <Row>
                     <Col md="6">
@@ -26,6 +28,7 @@ function Signup() {
                             className="ctrl md"
                             type = "text"
                             name  = "firstname"
+                            onClick = { handleInput }
                         />
                     </Col>
                     <Col md="6">
@@ -37,6 +40,7 @@ function Signup() {
                             className="ctrl md"
                             type = "text"
                             name  = "lastname"
+                            onClick = { handleInput }
                         />
                     </Col>
                 </Row>
@@ -48,6 +52,7 @@ function Signup() {
                             name="email" 
                             id="user-email"
                             autoComplete = "email"
+                            onClick = { handleInput }
                         />
                     </Col>
                     <Col md="6">
@@ -59,6 +64,7 @@ function Signup() {
                             className="ctrl md"
                             type = "text"
                             name  = "phonenumber"
+                            onClick = { handleInput }
                         />
                     </Col>
                 </Row>
@@ -73,6 +79,7 @@ function Signup() {
                             type = "text"
                             name  = "password1"
                             visibilityControl = { true }
+                            onClick = { handleInput }
                         />
                     </Col>
                     <Col md="6">
@@ -85,13 +92,16 @@ function Signup() {
                             type = "text"
                             name  = "password2"
                             visibilityControl = { false }
+                            onClick = { handleInput }
                         />
                     </Col>
                 </Row>
+                <Button color="success"  block>Sign Up</Button>
                 <Row>
-                    <p>Don't have an account? <a href="/" className="text-signup">Sign In</a></p>
+                    <p>Don't have an account? <Link to="/" className="text-signup">Sign In</Link></p>
                 </Row>
             </form>
+            </Container>
         </div>
     )
 }

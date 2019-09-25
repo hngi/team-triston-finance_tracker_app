@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import bg from '../images/login-bg.jpg';
 import { Button } from 'reactstrap';
 import { Password, EmailField } from '../components';
+import { Link } from 'react-router-dom';
 import '../styles/Login.css';
 
 
-function Login() {
+function Login(props) {
 
     const [values, set] = useState({
         showPassword:false,
@@ -15,35 +15,22 @@ function Login() {
         validEmail:false,
         validPassword:false
     })
-    const [toForgotPassword, setToForgotPassword]  = useState(false)
-    const [toSignUp, setToSignUp]  = useState(false)
 
     const handleInput = ({ target, valid })=>{
-        console.log({values,target, valid})
         const { name, value } = target;
         const formdata = {};
         formdata[name] = value;
         formdata[name === "email" ? "validEmail": "validPassword"] = valid;
         set(values => ({ ...values,...formdata }));
-        console.log(values)
     }
 
     const handleSubmit = ()=>{
         console.log(values);
-    }
-
-    const handleRedirectToForgotPassword = () => {
-        setToForgotPassword(true)
-    }
-
-    const handleRedirectToSignUp = () => {
-        setToSignUp(true)
+        const { email, password, validEmail, validPassword } = values;
+        if(!validEmail || !validPassword) return;
     }
 
     return (
-        <>
-        {toForgotPassword ? <Redirect to="/forgot-password" /> : null}
-        {toSignUp ? <Redirect to="/get-started" /> : null}
         <div className="page-container">
             <div className="page-group form-area">
                 <form onSubmit = {e => { e.preventDefault() }} >
@@ -67,7 +54,7 @@ function Login() {
                         <Button 
                             className="forget-password-btn" 
                             color="link"
-                            onClick = { handleRedirectToForgotPassword }
+                            onClick = { ()=> props.history.push("/forgot-password") }
                         >
                             Forgot Password ?
                         </Button>
@@ -80,23 +67,18 @@ function Login() {
                         type = "button"
                         disabled = { !values.validEmail || !values.validPassword }
                     > 
-                        Login
+                        Sign In 
                     </Button>
                     <div className="text-center mt-3">
-                        <p>Don't have an account? <a href="/" className="text-signup">Sign Up</a></p>
+                        <p>Don't have an account? 
+                            <Link className="text-signup" to="/get-started"> Sign Up</Link>
+                        </p>
                     </div>
                 </form>
             </div>
             <div className="page-group form-image">
                 <div className="background-holder" style={{backgroundImage: `url(${bg})` }}> </div>
                 <div className="overlay"></div>
-                <div className="sign-up">
-                        <Button 
-                            onClick = { handleRedirectToSignUp }
-                        >
-                           Sign up
-                        </Button>
-                    </div>
                 <div className="desc-text">
                     <h4> TristonFinApp gives best services to our customers. </h4>
                     <p>
@@ -108,7 +90,6 @@ function Login() {
                 </div>
             </div>
         </div>
-        </>
     )
 }
 
