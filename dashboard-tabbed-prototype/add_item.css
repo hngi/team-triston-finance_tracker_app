@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Poppins, Medium, sans-serif;
+}
+
+body {
+  height: 100vh;
+}
+
+/*MAIN CONTENT STYLES*/
+.content_container {
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header p {
+  color: #394a6d;
+  font-size: 1rem;
+}
+
+header .close {
+  font-size: 1.1rem;
+  color: #000000;
+}
+
+form {
+  border-radius: 3px;
+  width: 430px;
+  padding: 1rem;
+  background: white;
+}
+
+form header {
+  margin-bottom: 1rem;
+}
+
+form header i {
+  cursor: pointer;
+  padding: 0.4rem;
+}
+
+.form_container {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form_row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.form_row input {
+  width: 100%;
+}
+
+.form_row input,
+.form_row select {
+  padding: 0.4rem;
+  border: 2px solid rgba(17, 17, 17, 0.3);
+  border-radius: 5px;
+}
+
+.form_row select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+    no-repeat right;
+  background-position: 96%;
+}
+
+.form_container button {
+  border: none;
+  color: white;
+  border-radius: 3px;
+  box-shadow: 0 3px 12px #00000029;
+  background: #52de97;
+  padding: 0.6rem 1.8rem;
+  cursor: pointer;
+  align-self: center;
+}
+
+/*====MODAL STYLES====*/
+.modal {
+  position: absolute;
+  background: rgba(24, 23, 23, 0.3);
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
