@@ -1,0 +1,12 @@
+.gContainer{
+    min-height: 100vh;
+    display: flex;
+}
+
+.form-wrap{
+    margin: auto;
+}
+
+.space-top-25{
+    margin-top:25px;
+}

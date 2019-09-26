@@ -18,7 +18,7 @@ function Password(props) {
         ...others 
     } = props;
 
-    minLength = minLength|| 6;
+    minLength = minLength|| 8;
     visibilityControl = typeof visibilityControl === "undefined" ? true : visibilityControl;
 
     const [inputstate, set] = useState({
