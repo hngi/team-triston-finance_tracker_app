@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react'
-import { Button, Row, Col, Container } from 'reactstrap';
+import { Button, Row, Col, Container, Alert } from 'reactstrap';
 import { InputField, EmailField, Password  } from "../components";
 import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
+import Loader from "../components/Loader";
 import "../styles/Sigup.css";
 
 function Signup(props) {
@@ -14,51 +15,47 @@ function Signup(props) {
         phonenumber:"",
         password1:"",
         password2:"",
-        fullnameIsValid:true,
-        usernameIsValid:true,
-        phonenumberIsValid:true,
-        emailIsValid:true,
-        password1IsValid:true
+        emailIsValid:false,
+        password1IsValid:false,
+        loading:false,
+        alert:false,
+        alertText:"",
+        alertColor:""
     })
 
-    const { user, updateUser } = useContext(UserContext);
+    const { updateUser } = useContext(UserContext);
 
-    const emailRef = React.createRef();
 
     const handleInput = ({ target, valid })=>{
         const { name, value } = target;
         if(name === "password1" || name === "email"){
             set(values=> ({...values, [name]:value, [`${name}IsValid`]: valid }));
         }else{
-            console.log(!!value)
-            set(values=> ({...values, [name]:value, [`${name}IsValid`]: !!value }));
+            set(values=> ({...values, [name]:value }));
         }
     }
 
-    const handleConfirmPassword = ({ target:{ value, name } })=>{
-
-    }
-
-    const validateForm = ()=>{
-        let fields = ["fullname", "username", "email", "phonenumber"]
-        let newState = {};
-        fields.map(fieldname =>{
-            console.log(!state[fieldname] , state[fieldname] )
-            return !state[fieldname] && (state[`${fieldname}IsValid`] = false);
-        })
-        set(state => ({...state, ...newState}));
-
-
-
-
+     const validateForm = ()=>{
+        let {
+            fullname,
+            username,
+            phonenumber,
+            emailIsValid,
+            password1IsValid,
+            password1,
+            password2
+        } = state
+        
+        return !fullname || !username ||!phonenumber ||!emailIsValid || !password1IsValid || !(password1 === password2);
     }
 
     const handleSubmit = async ()=>{
-        // if(!validateForm()) return;
+        if(validateForm()) return;
+
         let { fullname,username,email,phonenumber,password1,password2 } = state;
 
         try {
-
+            set(values => ({ ...values, loading:true }));
             const response = await fetch("https://team-trion.herokuapp.com/register/",{
                 method: 'POST', 
                 mode: 'cors', 
@@ -73,7 +70,7 @@ function Signup(props) {
                     email,
                     phonenumber,
                     password1,
-                    password2:password1
+                    password2
                 })
             });
 
@@ -81,7 +78,7 @@ function Signup(props) {
             const data = await response.json();
 
             if(status === 201 || status === 200 ){
-                const { token } = data;
+                const { key:token } = data;
                 const payload = {
                     isLoggedIn:true,
                     userData:{
@@ -93,13 +90,14 @@ function Signup(props) {
                 localStorage["_authuser"] = JSON.stringify(payload);
                 props.history.push("/report");
             }else{
+                console.log(Object.keys(data)[0], data, data[Object.keys(data)[0]]);
                 let message = Array.isArray(data) 
                     ?
                     data[0]
                     :
-                    data[Object.keys(data)[0][0]]
-                set(values=>({
-                    ...values,
+                    data[Object.keys(data)[0]][0];
+                set(state=>({
+                    ...state,
                     loading:false,
                     alert:true,
                     alertColor:"danger",
@@ -115,13 +113,19 @@ function Signup(props) {
     return (
         <div className="gContainer" >
             <Container className="form-wrap">
+            <Alert 
+                isOpen={ state.alert } 
+                toggle={ ()=> set(state=>({...state, alert:false })) }
+                color = { state.alertColor }
+            > 
+                { state.alertText }
+            </Alert>
             <form>
                 <Row>
                     <Col md="6" xs="12">
                         <InputField 
                             id="fullname"
                             label="Full Name"
-                            validInput = { state.fullnameIsValid }
                             required = { true }
                             className="ctrl md"
                             type = "text"
@@ -133,7 +137,6 @@ function Signup(props) {
                         <InputField 
                             id="usernanme"
                             label="User Name"
-                            validInput = { state.usernameIsValid }
                             required = { true }
                             className="ctrl md"
                             type = "text"
@@ -151,14 +154,12 @@ function Signup(props) {
                             name="email" 
                             id="user-email"
                             onKeyUp = { handleInput }
-                            inputRef ={ emailRef }
                         />
                     </Col>
                     <Col md="6" xs="12">
                         <InputField 
                             id="phone-number"
                             label="Phone Number"
-                            validInput = { state.phonenumberIsValid }
                             required = { true }
                             className="ctrl md"
                             type = "number"
@@ -181,15 +182,15 @@ function Signup(props) {
                         />
                     </Col>
                     <Col md="6" xs="12">
-                        <Password 
+                        <InputField 
                             id="password2"
                             label="Confirm Password"
-                            required = { true }
                             className="ctrl md"
-                            type = "text"
+                            type = "password"
                             name  = "password2"
-                            visibilityControl = { false }
-                            onKeyUp = { handleConfirmPassword }
+                            onKeyUp = { handleInput }
+                            validInput = { state.password2 >= 1 ? state.password1 === state.password2 : true }
+                            errorText = { "password does not match!" }
                         />
                     </Col>
                 </Row>
@@ -198,8 +199,11 @@ function Signup(props) {
                         <Button 
                             color="success"
                             block
-                            onClick = { handleSubmit }>
+                            onClick = { handleSubmit }
+                            disabled = { state.loading || validateForm() }
+                            >
                             Sign Up
+                            { state.loading && <Loader width="30px" />}
                         </Button>
                     </Col>
                     <Col md="12">
