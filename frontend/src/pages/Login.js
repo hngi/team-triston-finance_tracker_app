@@ -82,9 +82,8 @@ function Login(props) {
                 <div className="desc-text">
                     <h4> TristonFinApp gives best services to our customers. </h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        A financial tracker app that allows users to enter items they have purchased with money over a given period of time. The app is then able 
+                        to display the total amount spent per time by the user  based on the time period selected. 
                     </p>
                     <Button className="inverted-white get-started" outline color="primary" >Get Started</Button>
                 </div>
