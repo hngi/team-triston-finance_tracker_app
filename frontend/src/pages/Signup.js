@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Row, Col, Container } from 'reactstrap';
 import { InputField, EmailField, Password  } from "../components";
 import { Link } from 'react-router-dom';
+import '../styles/Signup.css';
 
 function Signup() {
 
@@ -20,7 +21,7 @@ function Signup() {
             <form>
                 <Row>
                     <Col md="6">
-                        <InputField 
+                        <InputField
                             id="firstname"
                             label="First Name"
                             validInput = { state.firstnameIsValid }
@@ -32,7 +33,7 @@ function Signup() {
                         />
                     </Col>
                     <Col md="6">
-                        <InputField 
+                        <InputField
                             id="lastname"
                             label="Last Name"
                             validInput = { state.lastnameIsValid }
@@ -46,17 +47,17 @@ function Signup() {
                 </Row>
                 <Row>
                     <Col md="6">
-                        <EmailField 
-                            className="ctrl md" 
-                            type="email" 
-                            name="email" 
+                        <EmailField
+                            className="ctrl md"
+                            type="email"
+                            name="email"
                             id="user-email"
                             autoComplete = "email"
                             onClick = { handleInput }
                         />
                     </Col>
                     <Col md="6">
-                        <InputField 
+                        <InputField
                             id="phone-number"
                             label="Phone Number"
                             validInput = { state.phonenumberIsValid }
@@ -70,7 +71,7 @@ function Signup() {
                 </Row>
                 <Row>
                     <Col md="6">
-                        <Password 
+                        <Password
                             id="password1"
                             label="Password"
                             validInput = { state.password1IsValid }
@@ -83,7 +84,7 @@ function Signup() {
                         />
                     </Col>
                     <Col md="6">
-                        <Password 
+                        <Password
                             id="password2"
                             label="Confirm Password"
                             validInput = { state.password2IsValid }
@@ -98,7 +99,7 @@ function Signup() {
                 </Row>
                 <Button color="success"  block>Sign Up</Button>
                 <Row>
-                    <p>Don't have an account? <Link to="/" className="text-signup">Sign In</Link></p>
+                    <p>Have an account? <Link to="/" className="text-signup">Sign In</Link></p>
                 </Row>
             </form>
             </Container>
