@@ -97,9 +97,9 @@ function Signup() {
                         />
                     </Col>
                 </Row>
-                <Button color="success"  block>Sign Up</Button>
+                <Button color="success"  block> <Link to ="/dashboard">Sign Up</Link></Button>
                 <Row>
-                    <p>Have an account? <Link to="/" className="text-signup">Sign In</Link></p>
+                    <p>Have an account? <Link to="/login" className="text-signup">Sign In</Link></p>
                 </Row>
             </form>
             </Container>
