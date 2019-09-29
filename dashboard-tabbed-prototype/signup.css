@@ -1,0 +1,50 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: #ffffff;
+    font-family: Poppins;
+}
+.container.form-box {
+    border: 1px solid #3C9D9B;
+    border-radius: 5px;
+    margin-top: 71px;
+    width: 60%;
+    box-shadow: 4px #ddd;
+}
+h3{
+    margin-left: 99px;
+    margin-top: 30px;
+}
+h5{
+    margin-left: 99px;
+    margin-top: 50px;
+    font-weight: 600;
+}
+.container-fluid.forminput {
+    padding-left: 100px;
+    padding-right: 100px;
+    margin-top: 50px;
+}
+p{
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+#signIn{
+    margin-top: 30px;
+    Background-color: #52DE97;
+    color: #FFFFFF;
+}
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus, input[type=phone]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+input[name=Fname] {
+    border-color: #52DE97 ;
+}
+a {
+    color: #52DE97;
+}
