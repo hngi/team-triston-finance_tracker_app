@@ -1,33 +1,88 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import bg from '../images/login-bg.jpg';
-import { Button } from 'reactstrap';
-import { Password, EmailField } from '../components';
+import { Button, Alert } from 'reactstrap';
+import { Password, InputField } from '../components';
+import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
 import '../styles/Login.css';
+import Loader from "../components/Loader";
 
 
 function Login(props) {
 
     const [values, set] = useState({
         showPassword:false,
-        email:"",
+        username:"",
         password:"",
-        validEmail:false,
-        validPassword:false
+        validUserName:false,
+        validPassword:false,
+        alert:false,
+        alertText:"",
+        alertColor:"",
+        loading:false,
     })
+
+    const { user, updateUser } = useContext(UserContext);
 
     const handleInput = ({ target, valid })=>{
         const { name, value } = target;
         const formdata = {};
         formdata[name] = value;
-        formdata[name === "email" ? "validEmail": "validPassword"] = valid;
+        formdata[name === "username" ? "validUserName": "validPassword"] = valid;
         set(values => ({ ...values,...formdata }));
     }
 
-    const handleSubmit = ()=>{
-        console.log(values);
-        const { email, password, validEmail, validPassword } = values;
-        if(!validEmail || !validPassword) return;
+    const handleSubmit = async ()=>{
+        const { username, password, validPassword, loading } = values;
+
+        if(!username || !validPassword || loading) return;
+        try {
+            set(values => ({ ...values, loading:true }));
+            const response = await fetch("https://team-trion.herokuapp.com/login/",{
+                method: 'POST', 
+                mode: 'cors', 
+                cache: 'no-cache',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  username,
+                  password
+                })
+              });
+            let { status } = response;
+            const data = await response.json();
+
+            if(status === 201 || status === 200 ){
+                const { token } = data;
+                const payload = {
+                    isLoggedIn:true,
+                    userData:{
+                        username,
+                        token
+                    }
+                }
+                updateUser(payload);
+                localStorage["_authuser"] = JSON.stringify(payload);
+                props.history.push("/report");
+            }else{
+                let message = Array.isArray(data) 
+                    ?
+                    data[0]
+                    :
+                    data[Object.keys(data)[0]]
+                set(values=>({
+                    ...values,
+                    loading:false,
+                    alert:true,
+                    alertColor:"danger",
+                    alertText: message || "An Error Occured"
+                }))
+            }
+            
+        } catch (error) {
+            
+        }
     }
 
     return (
@@ -35,13 +90,21 @@ function Login(props) {
             <div className="page-group form-area">
                 <form onSubmit = {e => { e.preventDefault() }} >
                     <h5>Welcome back to TritonFinApp!</h5>
-                    <EmailField 
+                    <Alert 
+                        isOpen={ values.alert } 
+                        toggle={ ()=> set(v=>({...v, alert:false})) }
+                        color = { values.alertColor }
+                    > 
+                        { values.alertText }
+                    </Alert> 
+                    <InputField
                         className="ctrl md" 
-                        type="email" 
-                        name="email" 
-                        id="user-email"
+                        type="text" 
+                        name="username" 
+                        id="user-name"
                         onKeyUp = { handleInput }
-                        autoComplete = "email"
+                        autoComplete = "username"
+                        label = "User Name"
                     />
                     <Password
                         className="ctrl md" 
@@ -65,9 +128,10 @@ function Login(props) {
                         block
                         onClick = { handleSubmit }
                         type = "button"
-                        disabled = { !values.validEmail || !values.validPassword }
+                        disabled = { values.loading ? true :  (!values.username || !values.validPassword) }
                     > 
                         Sign In 
+                        { values.loading && <Loader width="30px" />}
                     </Button>
                     <div className="text-center mt-3">
                         <p>Don't have an account? 
@@ -86,7 +150,13 @@ function Login(props) {
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
-                    <Button className="inverted-white get-started" outline color="primary" >Get Started</Button>
+                    <Button 
+                        className="inverted-white get-started"
+                        outline 
+                        color="primary" 
+                        onClick = { ()=> props.history.push("/get-started") }
+                        >Get Started
+                    </Button>
                 </div>
             </div>
         </div>

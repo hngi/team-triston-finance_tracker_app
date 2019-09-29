@@ -5,11 +5,13 @@ import styles from "./Input.module.css";
 
 function InputField(props) {
 
-    let { id, validInput, formGroupClass, label, errorText, required, ...others } = props;
+    let { id, validInput, formGroupClass, label, errorText, required,className,  ...others } = props;
     
-    validInput = validInput || true;
+    validInput = typeof validInput === "undefined" ? true : validInput;
 
     errorText = required ? `${ (label ||"").toLowerCase() } is required!` : errorText;
+
+    let inputClass = validInput ? "valid" : "not-valid";
 
     return (
         <FormGroup className = { styles.formGroup + " " + ( formGroupClass || "" ) }>
@@ -17,6 +19,7 @@ function InputField(props) {
             <Input 
                 id = { id }
                 {...others}
+                className = { (className || "")+ " " + styles[inputClass]}
              />
             {
                 validInput 
