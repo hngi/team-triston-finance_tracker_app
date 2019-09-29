@@ -3,6 +3,7 @@ import '../../styles/sidebar.css';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import CloseIcon from '@material-ui/icons/Close';
+import { Button } from "reactstrap";
 
 const SidebarItem = ({ icon:Icon, text, tab, activeTab, onClick })=>(
     <li 
@@ -14,7 +15,7 @@ const SidebarItem = ({ icon:Icon, text, tab, activeTab, onClick })=>(
     </li>
 )
 
-function Sidebar({ activeTab, onTabClick, onCloseMenu, menuClass }) {
+function Sidebar({ activeTab, onTabClick, onCloseMenu, menuClass, logout }) {
     return (
         <div className={"side_bar "+ menuClass}>
           <div className="close-btn"
@@ -32,26 +33,35 @@ function Sidebar({ activeTab, onTabClick, onCloseMenu, menuClass }) {
             />
             <SidebarItem 
                 onClick = { onTabClick } 
-                tab="totalbyYear" 
+                tab="Year" 
                 text="Total By Year"
                 activeTab = { activeTab }
                 icon = { DateRangeIcon }
             />
             <SidebarItem 
                 onClick = { onTabClick } 
-                tab="totalbyMonth" 
+                tab="Month" 
                 text="Total By Month"
                 activeTab = { activeTab }
                 icon = { DateRangeIcon }
             />
             <SidebarItem 
                 onClick = { onTabClick } 
-                tab="totalbyWeek" 
+                tab="Week" 
                 text="Total By Week"
                 activeTab = { activeTab }
                 icon = { DateRangeIcon }
             />
           </ul>
+          <div className="text-center">
+                <Button
+                    color="primary"
+                    className="add-expense"
+                    onClick = { logout }
+                >
+                    Log Out
+                </Button>
+          </div>
         </div>
     )
 }

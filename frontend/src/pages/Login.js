@@ -22,7 +22,7 @@ function Login(props) {
         loading:false,
     })
 
-    const { user, updateUser } = useContext(UserContext);
+    const { updateUser } = useContext(UserContext);
 
     const handleInput = ({ target, valid })=>{
         const { name, value } = target;

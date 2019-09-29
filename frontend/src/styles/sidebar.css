@@ -23,11 +23,12 @@
     transition: background-color 0.3s;
     display: flex;
     padding: 15px;
+    color: white;
   }
   
   ul.side_nav li.active {
     background: #68f1ab;
-    color: white;
+    color: #005a39;
     font-weight: 600;
   }
   
@@ -54,7 +55,7 @@
     display: flex;
     align-items: center;
     background: #52de97;
-    padding: 10px;
+    padding: 15px;
     display:none;
   }
 

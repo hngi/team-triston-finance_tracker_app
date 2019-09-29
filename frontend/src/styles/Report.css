@@ -46,26 +46,19 @@
   section.dashboard .header_nav h1 {
     font-weight: 500;
   }
-  
-  /*User Details Styles*/
-  .user_details {
-    width: 25%;
+
+  button.add-expense{
+    background: #394a6d;
+    box-shadow: 0 3px 12px #00000029;
+    border-color: #394a6d;
+  }
+
+  button.add-expense:hover{
+      color: #fff;
+      background-color: #516a9e;
+      border-color: #516a9e;
   }
   
-  .user_details p:first-child {
-    color: #52de97;
-    font-size: 1.1rem;
-  }
-  
-  .user_details p.amount {
-    color: #394a6d;
-    font-size: 1.5rem;
-    font-weight: 700;
-  }
-  
-  .amount {
-    font-size: 1.5rem;
-  }
   /*===response styles====*/
   p.response {
     color: white;
@@ -106,28 +99,7 @@
   .search_box::placeholder {
     color: #394a6d;
   }
-  
-  table.user_data {
-    font-size: 1.1rem;
-    font-family: Poppins, Medium, sans-serif;
-  }
-  
-  thead tr th {
-    color: #394a6d;
-    text-align: left;
-    font-weight: 500;
-  }
-  
-  tbody tr {
-    color: #111111;
-    border: 1px solid #000000;
-  }
-  
-  table.user_data th,
-  table.user_data td {
-    padding: 12px 14px;
-  }
-  
+    
   section.dashboard .tab_pane {
     display: none;
   }

@@ -1,24 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/details.css';
+import Table from './Table';
+import Loader from '../../components/Loader';
 
 function ReportDetail(props) {
 
-const { type } = props;
-
-const [state, set] = useState({
-    type: type|| "year",
-    date: new Date().getFullYear()
-})
-
+    const { activeTab, dashboard, dashboardLoading } = props;
 
     return (
         <div className="report_detail_container">
             <div className="user_details">
-                <p>Total spent in { state.date }:</p>
-                <p className="amount">₦1,000,000</p>
+                <p>Total spent in { activeTab === "Year" ? new Date().getFullYear() : `this ${activeTab}` }:</p>
+                <p className="amount">₦{ dashboardLoading ? <Loader width="25px" /> : dashboard[`${activeTab.toLowerCase()}ly`] }</p>
             </div>
-            <div className="table">
-
+            <div className="table_container">
+                <Table />
             </div>
       </div>
     )

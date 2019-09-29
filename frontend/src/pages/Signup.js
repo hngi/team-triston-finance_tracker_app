@@ -113,6 +113,10 @@ function Signup(props) {
     return (
         <div className="gContainer" >
             <Container className="form-wrap">
+                <div className="sform-text">
+                    <h5>Sign Up To Have An Account</h5>
+                    <h6>just fill the form below and you are perfect!</h6>
+                </div>
             <Alert 
                 isOpen={ state.alert } 
                 toggle={ ()=> set(state=>({...state, alert:false })) }
@@ -207,7 +211,7 @@ function Signup(props) {
                         </Button>
                     </Col>
                     <Col md="12">
-                        <p className="mt-1">Already have an Account ? <Link to="/" className="text-signup">Sign In</Link></p>
+                        <p className="mt-1 text-center">Already have an Account ? <Link to="/" className="text-signup">Sign In</Link></p>
                     </Col>
                 </Row>
             </form>
