@@ -17,7 +17,7 @@ function App() {
   const authUser = localStorage["_authuser"] ? JSON.parse(localStorage["_authuser"]) : {isLoggedIn:false, userData:{}};
 
   const [user, updateUser] = useState(authUser);
-  
+
   return (
     <UserContextProvider value={{ user, updateUser }}>
         <section className="main">

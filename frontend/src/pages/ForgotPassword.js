@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button, FormGroup, Label, Input } from 'reactstrap';
-
 import '../styles/ForgotPassword.css';
 
 
 function ForgotPassword() {
 
     const [values, set] = useState({
-        email:"",
+        email:""
     })
-    const [toForgotPassword, setToForgotPassword]  = useState(false)
 
     const handleInput = ({ target })=>{
         const { name, value } = target;
@@ -21,13 +19,8 @@ function ForgotPassword() {
         console.log(values)
     }
 
-    const handleRedirect = () => {
-        setToForgotPassword(true)
-    }
-
     return (
-        <>
-        {toForgotPassword ? <Redirect to="/forgot-password" /> : null}
+    <>
         <div className="forgotpage-container">
             <div className="forgot-group form-area">
                 <form>
@@ -53,12 +46,12 @@ function ForgotPassword() {
                         Reset Password
                     </Button>
                     <div className="text-center mt-3">
-                        <p>Already have an account? <a href="/" className="text-signup">Log in</a></p>
+                        <p>Already have an account? <Link to="/" className="text-signup">Log in</Link></p>
                     </div>
                 </form>
             </div>
         </div>
-        </>
+    </>
     )
 }
 

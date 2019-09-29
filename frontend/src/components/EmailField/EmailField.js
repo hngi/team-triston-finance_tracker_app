@@ -6,7 +6,16 @@ const e_regex = /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\
 
 function EmailField(props) {
 
-    let { onPasswordEntered, label, valid, minLength, onKeyUp, className:classes, type, ...others } = props;
+    let { 
+        onPasswordEntered,
+        label,
+        valid,
+        minLength,
+        onKeyUp,
+        className:classes,
+        type, 
+        ...others 
+    } = props;
 
     minLength = minLength|| 6;
 
