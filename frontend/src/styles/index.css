@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
@@ -17,24 +21,17 @@ body {
     height:100vh;
   }
    */
-  
+
 .form-control.ctrl:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: none;
-    outline: 0;
-    box-shadow: 0 0 0 0.1rem rgba(49, 187, 108, 0.77);
+  color: #495057;
+  background-color: #fff;
+  border-color: none;
+  outline: 0;
+  box-shadow: 0 0 0 0.1rem rgba(49, 187, 108, 0.77);
 }
 
-
-.form-control.md{
-  height: calc(1.5em + .75rem + 8px);
-}
-
-
-.btn-outline-primary.inverted-white {
-  color: #fff;
-  border-color: #fff;
+.form-control.md {
+  height: calc(1.5em + 0.75rem + 8px);
 }
 
 .btn-outline-primary.inverted-white {
@@ -42,13 +39,42 @@ body {
   border-color: #fff;
 }
 
-.btn-outline-primary.inverted-white:hover{
+.btn-outline-primary.inverted-white {
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn-outline-primary.inverted-white:hover {
   color: #fff;
   background-color: #1dc367;
   border-color: none;
 }
 
-
-button:disabled{
+button:disabled {
   cursor: not-allowed;
+}
+
+/*MEDIA QUERIES FOR RWD*/
+@media screen and (max-width: 700px) {
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  h5 {
+    width: 100%;
+  }
+  .form-area {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .form-image {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .desc-text {
+    padding: 1rem;
+  }
 }
