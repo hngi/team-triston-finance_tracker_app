@@ -5,7 +5,9 @@
 
   main.report_content{
     width: 83%;
+    overflow: auto;
   }
+  
  
   /*=====MAIN DASHBOARD STYLES=====*/
   section.dashboard {

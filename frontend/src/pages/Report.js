@@ -23,13 +23,20 @@ class Report extends Component {
           weekly: 0,
           monthly: 0,
           yearly: 0
-        }
+        },
+        expenseList:{
+          Year:{loading:false, data:[]},
+          Month:{loading:false, data:[]},
+          Week:{loading:false, data:[]}
+        },
+
       }
       this.handleTabClick = this.handleTabClick.bind(this);
       this.closeMenu = this.closeMenu.bind(this);
       this.showMenu = this.showMenu.bind(this);
       this.openModal = this.openModal.bind(this);
       this.fetchDashboardData = this.fetchDashboardData.bind(this);
+      this.refreshDasboard = this.refreshDasboard.bind(this)
       this.logout = this.logout.bind(this);
       Report.contextType = UserContext;
     }
@@ -62,14 +69,44 @@ class Report extends Component {
       }
     }
 
+    async fetchTableData(tab){
+
+      let { expenseList } = this.state;
+
+      expenseList[tab]["loading"] = true;
+      this.setState({ expenseList });
+
+      const response = await getWithAuth(`/${tab.toLowerCase()}ly/`);
+      const { status } = response;
+      const data = await response.json();
+
+      if(status === 200 ){
+        ({ expenseList } = this.state);
+        expenseList[tab]["data"] = Object.values(data);
+        expenseList[tab]["loading"] = false;
+        this.setState({ expenseList });
+      }
+
+    }
+
     componentDidMount(){
       this.fetchDashboardData();
+      this.fetchTableData('Year');
+      this.fetchTableData('Month');
+      this.fetchTableData('Week');
     }
 
     logout(){
       var {updateUser} = this.context;
       delete localStorage._authuser;
       updateUser({isLoggedIn:false, userData:{}});
+    }
+
+    refreshDasboard(){
+      this.fetchDashboardData();
+      this.fetchTableData('Year');
+      this.fetchTableData('Month');
+      this.fetchTableData('Week');
     }
 
     render() {
@@ -114,7 +151,7 @@ class Report extends Component {
                   <AddExpenseModal 
                     open = { this.openModal } 
                     isOpen = { this.state.modalIsOpen } 
-                    refreshDasboard = { this.fetchDashboardData }
+                    refreshDasboard = { this.refreshDasboard }
                   />
                 </main>
             </div>

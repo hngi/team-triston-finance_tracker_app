@@ -2,7 +2,7 @@ import React from 'react';
 import { Table } from 'reactstrap';
 import style from '../../styles/Table.module.css';
 
-export default function CustomPaginationActionsTable() {
+export default function ReportTable({ data, loading }) {
 
     return (
         <>                
@@ -19,24 +19,21 @@ export default function CustomPaginationActionsTable() {
                 </tr>
             </thead>
             <tbody>
-                <tr className={ style.row }>
-                <th scope="row">1</th>
-                <td>Bounty</td>
-                <td>₦1,000</td>
-                <td>bounty for issue #2234</td>
-                </tr>
-                <tr className={ style.row }>
-                <th scope="row">2</th>
-                <td>Bisciut</td>
-                <td>₦700</td>
-                <td>gain weight</td>
-                </tr>
-                <tr className={ style.row }>
-                <th scope="row">3</th>
-                <td>bounty</td>
-                <td>₦1,000</td>
-                <td>Isuess #1567</td>
-                </tr>
+                {
+                    loading ?
+                    <tr className="text-center">loading...</tr>
+                    :data.length ?
+                    data.map(({ Amount, Description, Name, Items }, i)=>(
+                        <tr key={i} className={ style.row }>
+                            <th scope="row">{i}</th>
+                            <td>{ Name || Items }</td>
+                            <td>₦{ Amount.toLocaleString() }</td>
+                            <td>{ Description }</td>
+                        </tr>
+                    ))
+                    :
+                    <tr className="text-center"> No Expense Created </tr>
+                }
             </tbody>
             </Table>
         </>

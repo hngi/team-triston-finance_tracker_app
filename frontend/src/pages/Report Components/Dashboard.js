@@ -15,7 +15,7 @@ function Dashboard(props) {
                     { 
                         dashboardLoading ? 
                         <Loader width="25px" /> : 
-                        <p className="amount">₦{ dashboard.weekly }</p> 
+                        <p className="amount">₦{ dashboard.weekly.toLocaleString() }</p> 
                     }
                     <p>Total spent in a week</p>
                 </div>
@@ -24,7 +24,7 @@ function Dashboard(props) {
                     { 
                         dashboardLoading ? 
                         <Loader width="25px" /> 
-                        : <p className="amount">₦{ dashboard.monthly }</p> 
+                        : <p className="amount">₦{ dashboard.monthly.toLocaleString() }</p> 
                     }
                     <p>Total spent in a month</p>
                 </div>
@@ -34,7 +34,7 @@ function Dashboard(props) {
                 {
                     dashboardLoading ? 
                     <Loader width="25px" /> 
-                    :<p className="amount">₦{ dashboard.yearly }</p> 
+                    :<p className="amount">₦{ dashboard.yearly.toLocaleString() }</p> 
                 }
                 <p>Total spent in a year</p>
             </div>
