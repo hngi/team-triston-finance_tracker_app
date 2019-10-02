@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Button, Row, Col, Container, Alert } from 'reactstrap';
 import { InputField, EmailField, Password  } from "../components";
+import { signIn } from '../utils/APIRequest';
 import { UserContext } from '../UserContext';
 import { Link } from 'react-router-dom';
 import Loader from "../components/Loader";
@@ -78,14 +79,7 @@ function Signup(props) {
             const data = await response.json();
 
             if(status === 201 || status === 200 ){
-                const { key:token } = data;
-                const payload = {
-                    isLoggedIn:true,
-                    userData:{
-                        username,
-                        token
-                    }
-                }
+                let payload = await signIn({ username,password:password1 })
                 updateUser(payload);
                 localStorage["_authuser"] = JSON.stringify(payload);
                 props.history.push("/report");
