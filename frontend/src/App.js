@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Footer } from "./components";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { PrivateRoute } from './components/PrivateRoute';
-import { UserContextProvider } from './UserContext';
 
-// pages
-import Login from './pages/Login';
-import Signup from './pages/Signup';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { UserContextProvider } from './UserContext';
+import { Footer } from "./components";
+
+import { PrivateRoute } from './components/PrivateRoute';
 import Expense from './pages/Expense';
-import Report from './pages/Report';
 import ForgotPassword  from './pages/ForgotPassword';
+import Login from './pages/Login';
+import Report from './pages/Report';
+import Signup from './pages/Signup';
 
 
 function App() {

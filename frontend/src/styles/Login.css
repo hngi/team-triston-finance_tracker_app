@@ -101,6 +101,13 @@ button.get-started{
     border: 0
 }
 
+.kep-login-facebook{
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border-radius:5px!important;
+}
 
 @media only screen and (max-width: 760px){
     .page-container{

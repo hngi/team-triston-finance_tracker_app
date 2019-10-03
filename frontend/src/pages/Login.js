@@ -1,11 +1,16 @@
 import React, { useState, useContext } from 'react';
-import bg from '../images/login-bg.jpg';
+
 import { Button, Alert } from 'reactstrap';
-import { Password, InputField } from '../components';
-import { UserContext } from '../UserContext';
+
 import { Link } from 'react-router-dom';
-import '../styles/Login.css';
+
+import { UserContext } from '../UserContext';
+import { Password, InputField } from '../components';
+import Facebook from "../components/Facebook"; 
 import Loader from "../components/Loader";
+import bg from '../images/login-bg.jpg';
+import '../styles/Login.css';
+
 
 
 function Login(props) {
@@ -133,6 +138,11 @@ function Login(props) {
                         Sign In 
                         { values.loading && <Loader width="30px" />}
                     </Button>
+                    {/* facebook button */}
+                    <div>
+                    < Facebook/>
+                    </div>
+
                     <div className="text-center mt-3">
                         <p>Don't have an account? 
                             <Link className="text-signup" to="/get-started"> Sign Up</Link>
