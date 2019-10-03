@@ -52,6 +52,13 @@ function Sidebar({ activeTab, onTabClick, onCloseMenu, menuClass, logout }) {
                 activeTab = { activeTab }
                 icon = { DateRangeIcon }
             />
+            <SidebarItem 
+                onClick = { onTabClick } 
+                tab="CE" 
+                text="Calculated Expenses"
+                activeTab = { activeTab }
+                icon = { DateRangeIcon }
+            />
           </ul>
           <div className="text-center">
                 <Button

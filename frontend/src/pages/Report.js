@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Sidebar from "./Report Components/Sidebar";
 import { UserContext } from '../UserContext';
 import ReportDetail from './Report Components/ReportDetail';
+import CalculatedExpenses from './Report Components/CalculatedExpenses';
 import Dashboard from './Report Components/Dashboard';
 import MenuIcon from '@material-ui/icons/Menu';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -144,8 +145,9 @@ class Report extends Component {
                   <div className="view-content" >
                     {
                       activeTab === "dashboard" 
-                      ? <Dashboard { ...this.state } />
-                      : <ReportDetail { ...this.state } />
+                      ? <Dashboard { ...this.state } /> : (
+                        activeTab === 'CE' ? <CalculatedExpenses { ...this.state } /> : <ReportDetail { ...this.state } />
+                      )
                     }
                   </div>
                   <AddExpenseModal 
