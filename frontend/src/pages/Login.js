@@ -1,11 +1,16 @@
 import React, { useState, useContext } from 'react';
-import bg from '../images/login-bg.jpg';
+
 import { Button, Alert } from 'reactstrap';
-import { Password, InputField } from '../components';
-import { UserContext } from '../UserContext';
+
 import { Link } from 'react-router-dom';
-import '../styles/Login.css';
+
+import { UserContext } from '../UserContext';
+import { Password, InputField } from '../components';
+import Facebook from "../components/Facebook"; 
 import Loader from "../components/Loader";
+import bg from '../images/login-bg.jpg';
+import '../styles/Login.css';
+
 
 
 function Login(props) {
@@ -133,6 +138,11 @@ function Login(props) {
                         Sign In 
                         { values.loading && <Loader width="30px" />}
                     </Button>
+                    {/* facebook button */}
+                    <div>
+                    < Facebook/>
+                    </div>
+
                     <div className="text-center mt-3">
                         <p>Don't have an account? 
                             <Link className="text-signup" to="/get-started"> Sign Up</Link>
@@ -146,9 +156,8 @@ function Login(props) {
                 <div className="desc-text">
                     <h4> TristonFinApp gives best services to our customers. </h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        A financial tracker app that allows users to enter items they have purchased with money over a given period of time. The app is then able 
+                        to display the total amount spent per time by the user  based on the time period selected. 
                     </p>
                     <Button 
                         className="inverted-white get-started"
