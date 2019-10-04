@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import Expense from './pages/Expense';
 import Report from './pages/Report';
 import ForgotPassword  from './pages/ForgotPassword';
+import faq from './pages/faq';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
               <Route exact path="/" component={ Login } />
               <Route path="/forgot-password" component={ ForgotPassword } />
               <Route path="/get-started" component={ Signup } />
+              <Route path="/faq-page" component={ faq } />
               <PrivateRoute isAuthenticated = { user.isLoggedIn } path="/add-expense" component={ Expense } />
               <PrivateRoute isAuthenticated = { user.isLoggedIn } path="/report" component={ Report } />
             </Switch>
