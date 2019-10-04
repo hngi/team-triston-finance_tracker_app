@@ -104,20 +104,25 @@ button.get-started{
 .kep-login-facebook{
     display: block;
     margin: 10px 0;
-    padding: 10px;
+    padding: 5px;
     width: 100%;
     border-radius:5px!important;
 }
+
+.faq {
+    color: #1dc367;
+    font-size: 0.9rem;
+  }
 
 @media only screen and (max-width: 760px){
     .page-container{
         justify-content: center;
     }
-    
+
     .page-group.form-image{
         display: none;
     }
-    
+
     .page-group{
         width: 80%;
     }
