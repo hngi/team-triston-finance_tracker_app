@@ -86,32 +86,36 @@ function Login(props) {
 
         }
     }
-    $(function() {
+    // $(function() {
 
-        if (localStorage.chkbx && localStorage.chkbx != '') {
-            $('#remember_me').attr('checked', 'checked');
-            $('#username').val(localStorage.usrname);
-            $('#pass').val(localStorage.pass);
-        } else {
-            $('#remember_me').removeAttr('checked');
-            $('#username').val('');
-            $('#pass').val('');
-        }
+    //     if (localStorage.chkbx && localStorage.chkbx != '') {
+    //         $('#remember_me').attr('checked', 'checked');
+    //         $('#username').val(localStorage.usrname);
+    //         $('#pass').val(localStorage.pass);
+    //     } else {
+    //         $('#remember_me').removeAttr('checked');
+    //         $('#username').val('');
+    //         $('#pass').val('');
+    //     }
 
-        $('#remember_me').click(function() {
+    //     $('#remember_me').click(function() {
 
-            if ($('#remember_me').is(':checked')) {
-                // save username and password
-                localStorage.usrname = $('#username').val();
-                localStorage.pass = $('#pass').val();
-                localStorage.chkbx = $('#remember_me').val();
-            } else {
-                localStorage.usrname = '';
-                localStorage.pass = '';
-                localStorage.chkbx = '';
-            }
-        });
-    });
+    //         if ($('#remember_me').is(':checked')) {
+    //             // save username and password
+    //             localStorage.usrname = $('#username').val();
+    //             localStorage.pass = $('#pass').val();
+    //             localStorage.chkbx = $('#remember_me').val();
+    //         } else {
+    //             localStorage.usrname = '';
+    //             localStorage.pass = '';
+    //             localStorage.chkbx = '';
+    //         }
+    //     });
+    // });
+
+    const handleGoogle = async () => {
+        console.log('sign in with google')
+    }
 
     return (
         <div className="page-container">
@@ -172,6 +176,16 @@ function Login(props) {
                     <div>
                     < Facebook/>
                     </div>
+                    <Button
+                        color="success"
+                        size="lg"
+                        block
+                        onClick = { handleGoogle }
+                        type = "button"
+                    >
+                        LOGIN WITH GOOGLE
+                        { values.loading && <Loader width="30px" />}
+                    </Button>
 
                     <p><Link to="/faq-page" className="faq">FAQ Page</Link></p>
 
@@ -211,19 +225,3 @@ function Login(props) {
     )
 }
 export default Login
-
-    © 2019 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-    https://github.com/Bisola-Adediran/team-triton-finance_tracker_app/pull/1
