@@ -101,6 +101,10 @@ button.get-started{
     border: 0
 }
 
+.inverted-white.get-started.teambutton{
+    margin-left: 200px;
+}
+
 .kep-login-facebook{
     display: block;
     margin: 10px 0;
