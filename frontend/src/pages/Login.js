@@ -152,9 +152,9 @@ function Login(props) {
                     </div>
                     <div class="container">
                     <label class="checkbox">
-                          <input type="checkbox" value="remember-me" id="remember_me"> Remember me
+                          <input type="checkbox" value="remember-me" id="remember_me" /> Remember me
                     </label>
-    
+
                     </div>
 
                     <Button
@@ -197,6 +197,13 @@ function Login(props) {
                         color="primary"
                         onClick = { ()=> props.history.push("/get-started") }
                         >Get Started
+                    </Button>
+                    <Button
+                        className="inverted-white get-started teambutton"
+                        outline
+                        color="primary"
+                        onClick = { ()=> props.history.push("/team") }
+                        >Meet The Team.
                     </Button>
                 </div>
             </div>
