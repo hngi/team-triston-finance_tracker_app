@@ -39,8 +39,8 @@ function Login(props) {
         try {
             set(values => ({ ...values, loading:true }));
             const response = await fetch("https://team-trion.herokuapp.com/login/",{
-                method: 'POST', 
-                mode: 'cors', 
+                method: 'POST',
+                mode: 'cors',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ function Login(props) {
                 localStorage["_authuser"] = JSON.stringify(payload);
                 props.history.push("/report");
             }else{
-                let message = Array.isArray(data) 
+                let message = Array.isArray(data)
                     ?
                     data[0]
                     :
@@ -79,9 +79,9 @@ function Login(props) {
                     alertText: message || "An Error Occured"
                 }))
             }
-            
+
         } catch (error) {
-            
+
         }
     }
 
@@ -90,55 +90,56 @@ function Login(props) {
             <div className="page-group form-area">
                 <form onSubmit = {e => { e.preventDefault() }} >
                     <h5>Welcome back to TritonFinApp!</h5>
-                    <Alert 
-                        isOpen={ values.alert } 
+                    <Alert
+                        isOpen={ values.alert }
                         toggle={ ()=> set(v=>({...v, alert:false})) }
                         color = { values.alertColor }
-                    > 
+                    >
                         { values.alertText }
-                    </Alert> 
+                    </Alert>
                     <InputField
-                        className="ctrl md" 
-                        type="text" 
-                        name="username" 
+                        className="ctrl md"
+                        type="text"
+                        name="username"
                         id="user-name"
                         onKeyUp = { handleInput }
                         autoComplete = "username"
                         label = "User Name"
                     />
                     <Password
-                        className="ctrl md" 
-                        name="password" 
+                        className="ctrl md"
+                        name="password"
                         id="user-password"
                         onKeyUp = { handleInput }
                         autoComplete = "current-password"
                     />
                     <div className="forget-pass">
-                        <Button 
-                            className="forget-password-btn" 
+                        <Button
+                            className="forget-password-btn"
                             color="link"
                             onClick = { ()=> props.history.push("/forgot-password") }
                         >
                             Forgot Password ?
                         </Button>
                     </div>
-                    <Button 
-                        color="success" 
-                        size="lg" 
+                    <Button
+                        color="success"
+                        size="lg"
                         block
                         onClick = { handleSubmit }
                         type = "button"
                         disabled = { values.loading ? true :  (!values.username || !values.validPassword) }
-                    > 
-                        Sign In 
+                    >
+                        Sign In
                         { values.loading && <Loader width="30px" />}
                     </Button>
                     <div className="text-center mt-3">
-                        <p>Don't have an account? 
+                        <p>Don't have an account?
                             <Link className="text-signup" to="/get-started"> Sign Up</Link>
                         </p>
                     </div>
                 </form>
+
             </div>
             <div className="page-group form-image">
                 <div className="background-holder" style={{backgroundImage: `url(${bg})` }}> </div>
@@ -146,20 +147,32 @@ function Login(props) {
                 <div className="desc-text">
                     <h4> TristonFinApp gives best services to our customers. </h4>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                     </p>
-                    <Button 
+                    <Button
                         className="inverted-white get-started"
-                        outline 
-                        color="primary" 
+                        outline
+                        color="primary"
                         onClick = { ()=> props.history.push("/get-started") }
                         >Get Started
                     </Button>
+                    <Button
+                        className="inverted-white get-started teambutton"
+                        outline
+                        color="primary"
+                        onClick = { ()=> props.history.push("/team") }
+                        >Meet The Team.
+                    </Button>
+
                 </div>
             </div>
+
+
+
         </div>
+
     )
 }
 

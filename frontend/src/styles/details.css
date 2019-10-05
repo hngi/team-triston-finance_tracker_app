@@ -13,19 +13,25 @@
 .user_details {
     width: 25%;
 }
-  
+
 .user_details p:first-child {
     color: #52de97;
     font-size: 0.9rem;
     margin: 4px;
 }
-  
+
 .user_details p.amount {
     color: #394a6d;
     font-size: 2rem;
     font-weight: 700;
 }
-  
+
 .amount {
     font-size: 1.5rem;
+}
+@media screen and (max-width: 600px) {
+    .report_detail_container{
+        width: 100%;
+    }
+
 }

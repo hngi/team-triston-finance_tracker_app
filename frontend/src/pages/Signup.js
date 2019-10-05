@@ -46,7 +46,7 @@ function Signup(props) {
             password1,
             password2
         } = state
-        
+
         return !fullname || !username ||!phonenumber ||!emailIsValid || !password1IsValid || !(password1 === password2);
     }
 
@@ -58,8 +58,8 @@ function Signup(props) {
         try {
             set(values => ({ ...values, loading:true }));
             const response = await fetch("https://team-trion.herokuapp.com/register/",{
-                method: 'POST', 
-                mode: 'cors', 
+                method: 'POST',
+                mode: 'cors',
                 cache: 'no-cache',
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ function Signup(props) {
                 props.history.push("/report");
             }else{
                 console.log(Object.keys(data)[0], data, data[Object.keys(data)[0]]);
-                let message = Array.isArray(data) 
+                let message = Array.isArray(data)
                     ?
                     data[0]
                     :
@@ -97,9 +97,9 @@ function Signup(props) {
                     alertColor:"danger",
                     alertText: message || "An Error Occured"
                 }))
-            } 
+            }
         } catch (error) {
-            
+
         }
 
     }
@@ -111,17 +111,17 @@ function Signup(props) {
                     <h5>Sign Up To Have An Account</h5>
                     <h6>just fill the form below and you are perfect!</h6>
                 </div>
-            <Alert 
-                isOpen={ state.alert } 
+            <Alert
+                isOpen={ state.alert }
                 toggle={ ()=> set(state=>({...state, alert:false })) }
                 color = { state.alertColor }
-            > 
+            >
                 { state.alertText }
             </Alert>
             <form>
                 <Row>
                     <Col md="6" xs="12">
-                        <InputField 
+                        <InputField
                             id="fullname"
                             label="Full Name"
                             required = { true }
@@ -132,7 +132,7 @@ function Signup(props) {
                         />
                     </Col>
                     <Col md="6" xs="12">
-                        <InputField 
+                        <InputField
                             id="usernanme"
                             label="User Name"
                             required = { true }
@@ -146,16 +146,16 @@ function Signup(props) {
                 </Row>
                 <Row>
                     <Col md="6" xs="12">
-                        <EmailField 
-                            className="ctrl md" 
-                            type="email" 
-                            name="email" 
+                        <EmailField
+                            className="ctrl md"
+                            type="email"
+                            name="email"
                             id="user-email"
                             onKeyUp = { handleInput }
                         />
                     </Col>
                     <Col md="6" xs="12">
-                        <InputField 
+                        <InputField
                             id="phone-number"
                             label="Phone Number"
                             required = { true }
@@ -168,7 +168,7 @@ function Signup(props) {
                 </Row>
                 <Row>
                     <Col md="6" xs="12">
-                        <Password 
+                        <Password
                             id="password1"
                             label="Password"
                             required = { true }
@@ -180,7 +180,7 @@ function Signup(props) {
                         />
                     </Col>
                     <Col md="6" xs="12">
-                        <InputField 
+                        <InputField
                             id="password2"
                             label="Confirm Password"
                             className="ctrl md"
@@ -194,7 +194,7 @@ function Signup(props) {
                 </Row>
                 <Row>
                     <Col className="space-top-25" md="12">
-                        <Button 
+                        <Button
                             color="success"
                             block
                             onClick = { handleSubmit }
@@ -210,6 +210,7 @@ function Signup(props) {
                 </Row>
             </form>
             </Container>
+            
         </div>
     )
 }

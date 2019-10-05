@@ -101,16 +101,19 @@ button.get-started{
     border: 0
 }
 
+.inverted-white.get-started.teambutton{
+    margin-left: 200px;
+}
 
 @media only screen and (max-width: 760px){
     .page-container{
         justify-content: center;
     }
-    
+
     .page-group.form-image{
         display: none;
     }
-    
+
     .page-group{
         width: 80%;
     }
