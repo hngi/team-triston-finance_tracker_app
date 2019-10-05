@@ -36,7 +36,7 @@ export default class Facebook extends Component {
     } else {
       fbContent = ( <FacebookLogin appId = "442860319911924"
           autoLoad = {
-            true
+            false
           }
           fields = "name,email,picture"
           onClick = {

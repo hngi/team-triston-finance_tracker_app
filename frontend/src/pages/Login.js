@@ -177,7 +177,7 @@ function Login(props) {
                     < Facebook/>
                     </div>
                     <Button
-                        color="success"
+                        className="google-login"
                         size="lg"
                         block
                         onClick = { handleGoogle }
