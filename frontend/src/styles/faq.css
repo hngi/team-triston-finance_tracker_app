@@ -1,22 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Poppins;
-}
-
-body {
-  min-height: 100vh;
-}
-
+/* 
 div.container {
   margin: 0;
   padding: 0;
-}
+} */
 
-p {
+/* p {
   line-height: 1.7;
-}
+} */
 
 /* section.main {
   display: flex;
@@ -25,53 +15,53 @@ p {
 } */
 
 /*Header section styles*/
-header {
+/* header {
   color: white;
   background: #52de97;
   text-align: center;
   padding: 1rem;
   height: 30vh;
   position: relative;
-}
+} */
 
-header .header-content {
+/* header .header-content {
   width: 90%;
   margin: 0 auto;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-}
+} */
 
-header .back-home {
+/* header .back-home {
   position: absolute;
   top: -30px;
   left: 0px;
   font-size: 0.8rem;
   color: white;
-}
+} */
 
-header .back-home svg {
+/* header .back-home svg {
   font-size: 1rem;
   margin-right: 0.3rem;
-}
+} */
 
-header h1 {
+/* header h1 {
   font-size: 1.2rem;
   font-weight: bold;
-}
+} */
 
-header p {
+/* header p {
   font-size: 0.8rem;
   margin-bottom: 0;
-}
+} */
 
-/*main section styles*/
+/* main section styles
 main {
   width: 90%;
   margin: 2rem auto 0;
-}
+} */
 
-main h2 {
+/* main h2 {
   font-size: 1rem;
   font-weight: bold;
   color: rgb(14, 13, 13);
@@ -79,7 +69,7 @@ main h2 {
 
 main p {
   color: rgb(83, 83, 83);
-}
+} */
 
 main .question-container {
   padding: 0.6rem;
@@ -119,9 +109,9 @@ main .question-container {
 
 /*MEDIA Q*/
 @media screen and (min-width: 900px) {
-  main {
+  /* main {
     width: 80%;
-  }
+  } */
 
   main .question-container {
     margin-bottom: 2.5rem;

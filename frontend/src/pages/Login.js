@@ -3,7 +3,7 @@ import { Button, Alert } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import { Password, InputField } from '../components';
-import Facebook from "../components/Facebook";
+// import Facebook from "../components/Facebook";
 import Loader from "../components/Loader";
 import bg from '../images/login-bg.jpg';
 import '../styles/Login.css';
@@ -137,7 +137,7 @@ function Login(props) {
                     </Button>
                     {/* facebook button */}
                     <div>
-                    < Facebook/>
+                    {/* < Facebook/> */}
                     </div>
 
                     <p><Link to="/faq-page" className="faq">FAQ Page</Link></p>
