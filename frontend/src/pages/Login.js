@@ -40,7 +40,7 @@ function Login(props) {
         if(!username || !validPassword || loading) return;
         try {
             set(values => ({ ...values, loading:true }));
-            const response = await fetch("https://team-trion.herokuapp.com/login/",{
+            const response = await fetch("https://team-triton.herokuapp.com/login/",{
                 method: 'POST',
                 mode: 'cors',
                 cache: 'no-cache',
@@ -86,6 +86,32 @@ function Login(props) {
 
         }
     }
+    $(function() {
+
+        if (localStorage.chkbx && localStorage.chkbx != '') {
+            $('#remember_me').attr('checked', 'checked');
+            $('#username').val(localStorage.usrname);
+            $('#pass').val(localStorage.pass);
+        } else {
+            $('#remember_me').removeAttr('checked');
+            $('#username').val('');
+            $('#pass').val('');
+        }
+
+        $('#remember_me').click(function() {
+
+            if ($('#remember_me').is(':checked')) {
+                // save username and password
+                localStorage.usrname = $('#username').val();
+                localStorage.pass = $('#pass').val();
+                localStorage.chkbx = $('#remember_me').val();
+            } else {
+                localStorage.usrname = '';
+                localStorage.pass = '';
+                localStorage.chkbx = '';
+            }
+        });
+    });
 
     return (
         <div className="page-container">
@@ -96,7 +122,7 @@ function Login(props) {
                         isOpen={ values.alert }
                         toggle={ ()=> set(v=>({...v, alert:false})) }
                         color = { values.alertColor }
-                    >
+                >
                         { values.alertText }
                     </Alert>
                     <InputField
@@ -124,6 +150,13 @@ function Login(props) {
                             Forgot Password ?
                         </Button>
                     </div>
+                    <div class="container">
+                    <label class="checkbox">
+                          <input type="checkbox" value="remember-me" id="remember_me"> Remember me
+                    </label>
+    
+                    </div>
+
                     <Button
                         color="success"
                         size="lg"
@@ -170,5 +203,20 @@ function Login(props) {
         </div>
     )
 }
-
 export default Login
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
+    https://github.com/Bisola-Adediran/team-triton-finance_tracker_app/pull/1
