@@ -5,6 +5,7 @@ import { Footer } from "./components";
 import { PrivateRoute } from './components/PrivateRoute';
 import Expense from './pages/Expense';
 import ForgotPassword  from './pages/ForgotPassword';
+import Team from './pages/Team.js';
 import Login from './pages/Login';
 import Report from './pages/Report';
 import Signup from './pages/Signup';
